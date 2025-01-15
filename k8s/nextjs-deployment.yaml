@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs
+  template:
+    metadata:
+      labels:
+        app: nextjs
+    spec:
+      containers:
+      - name: nextjs
+        image: nextjs-app:0.0.3
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGODB_URI
+          value: mongodb://admin:1q2w3e4r@mongodb:27017/admin
